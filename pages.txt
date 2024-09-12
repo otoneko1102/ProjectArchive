@@ -1,0 +1,5 @@
+/main/blackjack ブラックジャック
+/main/exchange 為替レート
+/main/fake 偽リンク生成
+/main/replace 文字置き換え
+/main/tategaki 縦書き変換
