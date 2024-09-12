@@ -21,6 +21,14 @@ img {
   pointer-events: none;
 }
 
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+  height: auto;
+  max-width: 80%;
+}
+
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -37,6 +45,19 @@ li {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+@keyframes enlarge {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+li:hover {
+  animation: enlarge 0.3s forwards;
+}
+
 a {
   text-decoration: none;
   color: #333;
@@ -44,12 +65,4 @@ a {
 
 a:hover {
   color: #007acc;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto;
-  width: 500px;
-  height: auto;
-  max-width: 80%;
 }

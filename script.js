@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       lines.forEach(line => {
         if (line.trim()) {
-          const [path, name] = line.split(' ');
+          const [path, name, description] = line.split(' ');
 
           const listItem = document.createElement('li');
           const link = document.createElement('a');
           link.href = path;
           link.textContent = name;
+          link.description = description;
           listItem.appendChild(link);
 
           sitemapElement.appendChild(listItem);
