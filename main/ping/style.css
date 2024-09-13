@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
+
 .status-container {
   text-align: left;
 }
@@ -59,12 +61,14 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   width: 50%;
+  min-width: 200px;
   max-width: 500px;
 }
 
 #check-status {
+  font-family: 'Kiwi Maru', sans-serif;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #007bff;
