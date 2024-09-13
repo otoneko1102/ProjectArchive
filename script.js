@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const descriptionDiv = document.getElementById('description');
       const newParagraph = document.createElement('p');
-      newParagraph.textContent = 'Not found'
+      newParagraph.textContent = 'Not found.'
       lines.forEach(line => {
         if (line.trim()) {
           const args = line.split(' ');
