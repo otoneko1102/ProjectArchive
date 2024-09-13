@@ -8,9 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const lines = data.split('\n');
 
+      const descriptionDiv = document.getElementById('description');
+      const newParagraph = document.createElement('p');
+
       lines.forEach(line => {
         if (line.trim()) {
-          const [path, name, description] = line.split(' ');
+          const args = line.split(' ');
+          const path = args[0];
+          const name = args[1];
+          const description = args.slice(2).join(' ');
+
+          if (window.location.href.includes(path)) newParagraph.textContent = description;
 
           const listItem = document.createElement('li');
           const link = document.createElement('a');
@@ -22,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sitemapElement.appendChild(listItem);
         }
       });
+      descriptionDiv.appendChild(newParagraph);
     })
     .catch(error => {
       console.error('Error loading pages.txt:', error);

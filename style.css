@@ -29,6 +29,15 @@ img {
   max-width: 80%;
 }
 
+#description {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  text-align: center;
+}
+
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
