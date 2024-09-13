@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const descriptionDiv = document.getElementById('description');
       const newParagraph = document.createElement('p');
-
+      newParagraph.textContent = 'Not found'
       lines.forEach(line => {
         if (line.trim()) {
           const args = line.split(' ');
@@ -18,7 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
           const name = args[1];
           const description = args.slice(2).join(' ');
 
-          if (window.location.href.includes(path)) newParagraph.textContent = description;
+          const now = `/${window.location.href.split('/').slice(3).join('/')}`;
+          console.log(now);
+          if (
+            now === path ||
+            (
+              now === '/' &&
+              path === '/index.html'
+            )
+          ) newParagraph.textContent = description;
 
           const listItem = document.createElement('li');
           const link = document.createElement('a');
