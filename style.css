@@ -8,6 +8,7 @@ body {
   font-family: 'Kiwi Maru', sans-serif;
   font-weight: bold;
   padding: 40px;
+  padding-bottom: 50px;
   box-sizing: border-box;
   margin: 0;
 }
@@ -69,9 +70,29 @@ li:hover {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: #004777;
 }
 
 a:hover {
   color: #007acc;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: gainsboro;
+  text-align: left;
+  line-height: 50px;
+}
+
+footer a {
+  margin: 20px;
+}
+
+footer a::after {
+  content: ' >';
+  font-size: 12px;
 }

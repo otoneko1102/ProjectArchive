@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const now = `/${window.location.href.split('/').slice(3).join('/')}`;
           console.log(now);
           if (
-            now === path ||
+            now.includes(path) ||
             (
               now === '/' &&
               path === '/index.html'
@@ -44,3 +44,57 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error loading pages.txt:', error);
     });
 });
+
+const footer = document.querySelector('footer');
+
+if (footer) {
+  const links = [
+    {
+      url: 'https://dsc.gg/otolab',
+      textContent: 'Discord'
+    },
+    {
+      url: 'https://otoneko.jp/',
+      textContent: 'Dev Homepage'
+    }
+  ];
+  for (const link of links) {
+    const element = document.createElement('a');
+    element.href = link.url;
+    element.textContent = link.textContent;
+    element.target = '_blank';
+    footer.appendChild(element);
+  }
+
+  const copyButton = document.createElement('button');
+  const linkIcon = '🔗';
+  const checkIcon = '✅';
+
+  copyButton.textContent = linkIcon;
+  copyButton.title = 'Copy';
+  copyButton.style.position = 'absolute';
+  copyButton.style.right = '10px';
+  copyButton.style.bottom = '10px';
+  copyButton.style.border = 'none';
+  copyButton.style.background = 'transparent';
+  copyButton.style.cursor = 'pointer';
+  copyButton.style.marginLeft = '10px';
+  copyButton.style.fontSize = '24px';
+
+  copyButton.addEventListener('click', () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      copyButton.textContent = checkIcon;
+      copyButton.title = 'Success!'
+
+      setTimeout(() => {
+        copyButton.textContent = linkIcon;
+        copyButton.title = 'Copy'
+      }, 3000);
+    }).catch(err => {
+      console.error(err);
+    });
+  });
+
+  footer.appendChild(copyButton);
+}
