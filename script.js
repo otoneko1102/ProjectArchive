@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const pageName = document.getElementById('name');
       const descriptionDiv = document.getElementById('description');
       const newParagraph = document.createElement('p');
-      newParagraph.textContent = 'Not found.'
+      pageName.textContent = '404';
+      newParagraph.textContent = 'Not found.';
       lines.forEach(line => {
         if (line.trim()) {
           const args = line.split(' ');
