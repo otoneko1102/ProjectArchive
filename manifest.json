@@ -1,0 +1,16 @@
+{
+  "lang": "ja-jp",
+  "name": "ProjectArchive",
+  "short_name": "ProjectArchive",
+  "description": "Webツール",
+  "start_url": ".",
+  "orientation": "any",
+  "display": "standalone",
+  "version": "1.0.0",
+  "icons": [
+    {
+      "src": "https://www.projectarchive.cloud/img/icon.jpg",
+      "sizes": "2048x2048"
+    }
+  ]
+}
