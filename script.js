@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const lines = data.split('\n');
 
+      const is404 = document?.getElementById('404');
+
       const pageName = document.getElementById('name');
       const descriptionDiv = document.getElementById('description');
       const newParagraph = document.createElement('p');
@@ -24,10 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log(now);
 
           if (
-            now.includes(path) ||
+            !is404 &&
             (
-              now === '/' &&
-              path === '/index.html'
+              now.includes(path) ||
+              (
+                now === '/' &&
+                path === '/index.html'
+              )
             )
           ) {
             pageName.textContent = name;
