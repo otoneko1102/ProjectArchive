@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const lines = data.split('\n');
 
-      const is404 = document?.getElementById('404');
+      const is404 = document?.getElementById('notfound');
 
       const pageName = document.getElementById('name');
       const descriptionDiv = document.getElementById('description');
@@ -109,3 +109,26 @@ if (footer) {
 
   footer.appendChild(copyButton);
 }
+
+function showBar() {
+  const notFound = document.getElementById('notfound');
+  if (!notFound) return;
+  notFound.innerHTML = 'ページが見つかりませんでした';
+
+  const progressBar = document.createElement('div');
+  progressBar.id = 'progress-bar';
+  notFound.appendChild(progressBar);
+
+  const during = 5000;
+  setTimeout(() => {
+    progressBar.style.transition = `width ${during}ms linear`;
+    progressBar.style.width = '0%';
+  }, 10);
+
+  setTimeout(() => {
+    notFound.style.opacity = '0';
+    setTimeout(() => notFound.remove(), 500);
+  }, during);
+}
+
+window.onload = showBar;

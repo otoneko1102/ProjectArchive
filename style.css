@@ -96,3 +96,28 @@ footer a::after {
   content: ' >';
   font-size: 12px;
 }
+
+#notfound {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+#progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: white;
+  width: 100%;
+  transition: width linear;
+}
