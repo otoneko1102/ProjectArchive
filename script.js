@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             (
               now.includes(path) ||
               (
-                now === '/' &&
+                /^\/+$/.test(now) &&
                 path === '/index.html'
               )
             )
