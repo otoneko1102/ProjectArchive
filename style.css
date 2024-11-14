@@ -7,8 +7,8 @@ html {
 body {
   font-family: 'Kiwi Maru', sans-serif;
   font-weight: bold;
-  padding: 40px;
-  padding-bottom: 50px;
+  padding: 5px 40px;
+  padding-bottom: 70px;
   box-sizing: border-box;
   margin: 0;
 }
@@ -82,19 +82,25 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: auto;
   background-color: whitesmoke;
   text-align: left;
-  line-height: 50px;
+  line-height: 1.5;
+  padding: 5px 10px;
 }
 
 footer a {
-  margin: 20px;
+  margin: 5px 10px;
 }
 
 footer a::after {
   content: ' >';
   font-size: 12px;
+}
+
+footer p {
+  font-size: 10px;
+  margin: 5px 10px;
 }
 
 #notfound {

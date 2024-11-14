@@ -61,12 +61,16 @@ const footer = document.querySelector('footer');
 if (footer) {
   const links = [
     {
-      url: 'https://dsc.gg/otolab',
+      url: 'https://dsc.gg/otohome',
       textContent: 'Discord'
     },
     {
+      url: 'https://otoho.me/',
+      textContent: 'Team HP'
+    },
+    {
       url: 'https://otoneko.jp/',
-      textContent: 'Dev Homepage'
+      textContent: 'Dev HP'
     }
   ];
   for (const link of links) {
@@ -84,8 +88,8 @@ if (footer) {
   copyButton.textContent = linkIcon;
   copyButton.title = 'Copy';
   copyButton.style.position = 'absolute';
-  copyButton.style.right = '10px';
-  copyButton.style.bottom = '10px';
+  copyButton.style.right = '20px';
+  copyButton.style.bottom = '20px';
   copyButton.style.border = 'none';
   copyButton.style.background = 'transparent';
   copyButton.style.cursor = 'pointer';
@@ -108,6 +112,11 @@ if (footer) {
   });
 
   footer.appendChild(copyButton);
+
+  const c = document.createElement('p');
+  c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | ProjectArchive';
+  c.style.display = 'block';
+  footer.appendChild(c);
 }
 
 function showBar() {
