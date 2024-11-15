@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Archive</title>
     <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="/main/ping/style.css" type="text/css">
-    <script>
-    </script>
   </head>
   <body>
     <img class="logo" src="/img/logo.png">
     <h2 id="name"></h2>
     <div id="description"></div>
-    <div class="url-input-container">
-      <input type="text" id="url-input" placeholder="URLを入力">
-      <button id="check-status" onclick="pingServer(document.getElementById('url-input').value)">Check</button>
-    </div>
-    <div class="status-container">
-      <div class="status-item" id="website-status">
-        <h4>サイトステータス</h4>
-        <p>Status: <span id="website-status-text" class="status-ok">Working</span></p>
-        <p>Ping: <span id="website-response-time">-</span></p>
-        <div class="ping-container">
-          <div class="ping-bar" id="ping-bar"></div>
+    <section id="function">
+      <div class="url-input-container">
+        <input type="text" id="url-input" placeholder="URLを入力">
+        <button id="check-status" onclick="pingServer(document.getElementById('url-input').value)">Check</button>
+      </div>
+      <div class="status-container">
+        <div class="status-item" id="website-status">
+          <h4>サイトステータス</h4>
+          <p>Status: <span id="website-status-text" class="status-ok">Working</span></p>
+          <p>Ping: <span id="website-response-time">-</span></p>
+          <div class="ping-container">
+            <div class="ping-bar" id="ping-bar"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
     <h2>サイトマップ</h2>
     <ul id="sitemap"></ul>
     <footer></footer>

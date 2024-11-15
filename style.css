@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
 
+@keyframes enlarge {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
 html {
   background-color: azure;
 }
@@ -30,6 +39,23 @@ img {
   max-width: 80%;
 }
 
+section {
+  top: 20px;
+}
+
+#scrollButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
 #description {
   width: 90%;
   margin: 0 auto;
@@ -37,6 +63,27 @@ img {
   background-color: whitesmoke;
   border-radius: 5px;
   text-align: center;
+}
+
+button {
+  font-family: 'Kiwi Maru', sans-serif;
+  padding: 10px 20px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  animation: enlarge 0.3s forwards;
+}
+
+button:active {
+  background-color: #007bff;
 }
 
 ul {
@@ -55,15 +102,6 @@ li {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes enlarge {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
 li:hover {
   animation: enlarge 0.3s forwards;
 }
@@ -75,6 +113,35 @@ a {
 
 a:hover {
   color: #007acc;
+}
+
+form {
+  display: grid;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+select {
+  border-color: darkgrey;
+  border-width: 3px;
+  border-radius: 5px;
+}
+
+input {
+  border-color: darkgrey;
+  border-width: 3px;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 100%;
+  border-color: darkgrey;
+  border-width: 3px;
+  border-radius: 5px;
+}
+
+#sitemap a {
+  padding: 20px;
 }
 
 footer {

@@ -5,17 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Archive</title>
     <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
     <link rel="stylesheet" href="/style.css" type="text/css">
-    <script>
-    </script>
+    <link rel="stylesheet" href="/main/tategaki/style.css" type="text/css">
   </head>
   <body>
     <img class="logo" src="/img/logo.png">
     <h2 id="name"></h2>
     <div id="description"></div>
+    <section id="function">
+      <form>
+        <label for="count">改行文字数(0で無効)</label>
+        <input type="number" id="count" name="count" value="0" min="0" step="1">
+        <label for="spaces">文字間隔調整(0で無効):</label>
+        <input type="number" id="spaces" name="spaces" value="0" min="0" step="1">
+        <label for="direction">方向:</label>
+        <select id="direction" name="direction">
+          <option value="rtl">右から左</option>
+          <option value="ltr">左から右</option>
+        </select>
+          <label for="charCount">文字数:</label>
+        <div id="charCount">0</div>
+        <label for="content">Content:</label>
+        <textarea id="content" rows="5" name="content" required></textarea><br>
+      </form>
+      <div class="conv">
+        <button type="button" class="gen" onclick="genText()">Text</button>
+        <button type="button" class="gen" onclick="genHTML()">HTML</button>
+        <button type="button" class="gen" onclick="genScript()">Script</button>
+        <button type="button" class="gen" id="copyBtn">Copy</button>
+      </div>
+      <form>
+        <textarea id="output" rows="20" readonly></textarea>
+      </form>
+    </section>
     <h2>サイトマップ</h2>
     <ul id="sitemap"></ul>
     <footer></footer>
     <script src="/script.js"></script>
+    <script src="/main/tategaki/script.js"></script>
   </body>
 </html>

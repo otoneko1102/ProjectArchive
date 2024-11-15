@@ -56,6 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  const functionSection = document.getElementById('function');
+
+  if (functionSection) {
+    const button = document.createElement('button');
+    button.id = 'scrollButton';
+    button.textContent = 'Jump!';
+
+    document.body.appendChild(button);
+
+    button.addEventListener('click', function () {
+      functionSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        button.style.display = 'none';
+      }, 300)
+    });
+  }
+});
+
 const footer = document.querySelector('footer');
 
 if (footer) {
@@ -114,7 +133,7 @@ if (footer) {
   footer.appendChild(copyButton);
 
   const c = document.createElement('p');
-  c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | ProjectArchive';
+  c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | Project Archive';
   c.style.display = 'block';
   footer.appendChild(c);
 }

@@ -1,0 +1,31 @@
+select {
+  width: 110px;
+}
+
+input {
+  width: 100px;
+}
+
+#charCount {
+  padding: 0;
+  background-color: whitesmoke;
+  border: 3px solid darkgrey;
+  border-width: 3px;
+  border-radius: 5px;
+  width: 105px;
+}
+
+.conv {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.conv button {
+  text-align: center;
+  width: calc(80% / 4);
+  max-width: 150px;
+}
