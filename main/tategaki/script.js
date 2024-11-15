@@ -6,12 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     charCount.textContent = content.value.length.toLocaleString();
   }
 
-  // Add input event listener
   content.addEventListener('input', updateCharCount);
-  updateCharCount(); // Initial count update on load
+  updateCharCount();
 });
 
-// Replace characters mapping
 const replaceChars = {
   "ー": "｜",
   "（": "︵",
@@ -38,25 +36,21 @@ const replaceChars = {
   "〕": "︺",
 };
 
-// Generate text-based output
 function genText() {
   const content = tategaki(document.getElementById("content").value, "text");
   document.getElementById("output").value = content;
 }
 
-// Generate HTML-based output
 function genHTML() {
   const content = tategaki(document.getElementById("content").value, "html");
   document.getElementById("output").value = content;
 }
 
-// Generate script-based output
 function genScript() {
   const content = tategaki(document.getElementById("content").value, "script");
   document.getElementById("output").value = content;
 }
 
-// Copy output text to clipboard
 document.getElementById("copyBtn").addEventListener("click", function () {
   const textArea = document.getElementById("output");
   navigator.clipboard.writeText(textArea.value)
@@ -64,7 +58,6 @@ document.getElementById("copyBtn").addEventListener("click", function () {
     .catch(err => console.error("クリップボードへのコピーに失敗しました: ", err));
 });
 
-// Main text formatting function
 function tategaki(content, type) {
   console.log(`Start to convert for ${type}.`)
   const convertedContent = halfWidthToFullWidth(toZenKata(content));
@@ -104,7 +97,6 @@ function toZenKata(str) {
   return str;
 };
 
-// Convert half-width characters to full-width
 function halfWidthToFullWidth(str) {
   let result = "";
   for (let i = 0; i < str.length; i++) {
@@ -118,7 +110,6 @@ function halfWidthToFullWidth(str) {
   return result;
 }
 
-// Replace multiple characters based on a mapping
 function replaceMultiple(str, replacements) {
   let result = str;
   for (let pattern in replacements) {
@@ -129,7 +120,6 @@ function replaceMultiple(str, replacements) {
   return result;
 }
 
-// Split content into lines based on character count
 function fixLines(content, charCount) {
   if (!content) return null;
   const result = [];
@@ -143,7 +133,6 @@ function fixLines(content, charCount) {
   return result.join('');
 }
 
-// Convert content to a 2D array for reconstruction
 function convertTo2DArray(content) {
   const lines = content.split("\n");
   const maxLength = Math.max(...lines.map((line) => line.length));
@@ -158,7 +147,6 @@ function convertTo2DArray(content) {
   return result;
 }
 
-// Reconstruct the content for text output
 function reconstructForText(array, spaces, direction) {
   let reconstructedText = "";
   if (direction === "rtl") {
@@ -187,7 +175,6 @@ function reconstructForText(array, spaces, direction) {
   return reconstructedText;
 }
 
-// Reconstruct the content for HTML output
 function reconstructForHTML(array, spaces, direction) {
   let reconstructedText = "";
   if (direction === "rtl") {
@@ -216,7 +203,6 @@ function reconstructForHTML(array, spaces, direction) {
   return reconstructedText;
 }
 
-// Reconstruct the content for script output
 function reconstructForScript(array, spaces, direction) {
   let reconstructedText = "";
   if (direction === "rtl") {
@@ -245,7 +231,6 @@ function reconstructForScript(array, spaces, direction) {
   return reconstructedText;
 }
 
-// Check if a character is full-width
 function checkWidth(char) {
   return char.match(/^[^\x01-\x7E\uFF61-\uFF9F]+$/);
 }
