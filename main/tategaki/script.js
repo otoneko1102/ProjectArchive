@@ -36,19 +36,24 @@ const replaceChars = {
   "〕": "︺",
 };
 
+const output = document.getElementById("output");
+
 function genText() {
   const content = tategaki(document.getElementById("content").value, "text");
-  document.getElementById("output").value = content;
+  output.value = content;
+  output.select()
 }
 
 function genHTML() {
   const content = tategaki(document.getElementById("content").value, "html");
-  document.getElementById("output").value = content;
+  output.value = content;
+  output.select()
 }
 
 function genScript() {
   const content = tategaki(document.getElementById("content").value, "script");
-  document.getElementById("output").value = content;
+  output.value = content;
+  output.select()
 }
 
 document.getElementById("copyBtn").addEventListener("click", function () {

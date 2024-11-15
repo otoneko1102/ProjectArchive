@@ -6,7 +6,7 @@
     <title>Project Archive | 文字置き換え</title>
 
     <meta property="og:title" content="Project Archive | 文字置き換え">
-    <meta property="og:description" content="...">
+    <meta property="og:description" content="文章中の文字を置き換えます">
     <meta property="og:image" content="https://www.projectarchive.cloud/img/icon.png">
     <meta property="og:url" content="https://www.projectarchive.cloud">
     <meta property="og:type" content="website">
@@ -14,7 +14,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Project Archive | 文字置き換え">
-    <meta name="twitter:description" content="...">
+    <meta name="twitter:description" content="文章中の文字を置き換えます">
     <meta name="twitter:image" content="https://www.projectarchive.cloud/img/icon.png">
     <meta name="twitter:url" content="https://www.projectarchive.cloud">
     <meta name="twitter:site" content="@ProjectArchiveC">
@@ -23,17 +23,34 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
     <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/main/replace/style.css" type="text/css">
   </head>
   <body>
     <img class="logo" src="/img/logo.png">
     <h2 id="name"></h2>
     <div id="description"></div>
     <section id="function">
-      
+      <form id="main-form">
+        <div class="form-group">
+          <h2>変換前:</h2>
+          <textarea id="input-text" rows="5" cols="50"></textarea>
+        </div>
+        <div id="conversion-forms"></div>
+        <br>
+        <div class="buttons">
+          <button type="submit">変換</button>
+          <button type="button" class="gen" id="copyBtn">コピー</button>
+        </div>
+      </form>
+      <div>
+        <h2>変換後:</h2>
+        <textarea id="output-text" rows="5" cols="50" readonly></textarea>
+      </div>
     </section>
     <h2>サイトマップ</h2>
     <ul id="sitemap"></ul>
     <footer></footer>
     <script src="/script.js"></script>
+    <script src="/main/replace/script.js"></script>
   </body>
 </html>
