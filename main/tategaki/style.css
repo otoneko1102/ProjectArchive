@@ -27,6 +27,6 @@ input {
 .conv button {
   text-align: center;
   width: calc(80% / 3);
-  min-width: 125px;
+  min-width: 75px;
   max-width: 150px;
 }
