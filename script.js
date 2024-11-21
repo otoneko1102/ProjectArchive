@@ -84,11 +84,11 @@ if (footer) {
       textContent: 'Discord'
     },
     {
-      url: 'https://otoho.me/',
+      url: 'https://www.otoho.me/',
       textContent: 'Team HP'
     },
     {
-      url: 'https://otoneko.jp/',
+      url: 'https://www.otoneko.cat/',
       textContent: 'Dev HP'
     }
   ];
