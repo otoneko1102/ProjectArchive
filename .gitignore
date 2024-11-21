@@ -3,4 +3,5 @@ examples
 package-lock.json
 package.json
 createPagesText.js
+createSitemap.js
 metatag.js
