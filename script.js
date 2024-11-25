@@ -1,3 +1,16 @@
+let isMuted = localStorage?.getItem('mute');
+if (!isMuted) isMuted = 'true';
+
+function playSound(path) {
+  if (isMuted === 'true') return;
+  const sound = new Audio(path);
+  sound.play();
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function fetchJson(path) {
   console.log(`Try to fetch ${path}.`);
   const response = await fetch(path);
@@ -95,6 +108,27 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 300)
     });
   }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.createElement('button');
+  button.id = 'soundButton';
+  button.textContent = isMuted === 'true' ? '📢' : '🔇';
+
+  document.body.appendChild(button);
+
+  button.addEventListener('click', function () {
+    if (button.textContent === '📢') {
+      button.textContent = '🔇';
+      localStorage.setItem('mute', 'false');
+      isMuted = 'false';
+    } else {
+      button.textContent = '📢';
+      localStorage.setItem('mute', 'true');
+      isMuted = 'true';
+    }
+    console.log("Mute: " + isMuted);
+  });
 });
 
 const footer = document.querySelector('footer');

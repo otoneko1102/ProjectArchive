@@ -48,6 +48,7 @@ const suitEmojis = {
 function saveData() {
   localStorage.setItem('count', JSON.stringify(count));
 }
+
 // Delete data
 function deleteData() {
   count = { win: 0, lose: 0, tie: 0, blackjack: 0, reach21: 0 };
@@ -324,16 +325,6 @@ function showMessage(message) {
     startButton.disabled = false;
     deleteButton.disabled = false;
   }, 1000);
-}
-
-
-function playSound(path) {
-  const sound = new Audio(path);
-  sound.play();
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // Reset
