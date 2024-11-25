@@ -12,15 +12,6 @@ form h2, div h2 {
   text-align: left;
 }
 
-.buttons {
-  width: 90%;
-  margin: 0 auto;
-  padding: 10px;
-  background-color: whitesmoke;
-  border-radius: 5px;
-  text-align: center;
-}
-
 .form-group {
   padding-top: 20px;
 }

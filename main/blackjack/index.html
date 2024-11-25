@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
 
     <title>Project Archive | ブラックジャック</title>
-    <meta name="description" content="...">
+    <meta name="description" content="シンプルなブラックジャックで遊べます">
     <meta name="keywords" content="projectarchive,project,archive.otoneko,音猫,webtool,tool">
     <meta name="theme-color" content="#f0ffff">
 
     <meta property="og:title" content="Project Archive | ブラックジャック">
-    <meta property="og:description" content="...">
+    <meta property="og:description" content="シンプルなブラックジャックで遊べます">
     <meta property="og:image" content="https://www.projectarchive.cloud/img/icon.png">
     <meta property="og:url" content="https://www.projectarchive.cloud">
     <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Project Archive | ブラックジャック">
-    <meta name="twitter:description" content="...">
+    <meta name="twitter:description" content="シンプルなブラックジャックで遊べます">
     <meta name="twitter:image" content="https://www.projectarchive.cloud/img/icon.png">
     <meta name="twitter:url" content="https://www.projectarchive.cloud">
     <meta name="twitter:site" content="@ProjectArchiveC">
@@ -26,17 +26,54 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
     <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/main/blackjack/style.css" type="text/css">
   </head>
   <body>
     <img class="logo" src="/img/logo.png">
     <h2 id="name"></h2>
     <div id="description"></div>
     <section id="function">
-      
+      <div class="buttons">
+        <button onclick="toggleDocs()">遊び方</button>
+        <button id="toggle-scoreboard" onclick="toggleScoreboard()">スコアボード</button>
+      </div>
+      <div class="docs" id="docsboard">
+        <p id="docs"></p>
+      </div>
+      <div id="scoreboard" class="scoreboard">
+        <h2>スコアボード</h2>
+        <p>合計: <span id="total">0</span></p>
+        <p>勝ち: <span id="win">0</span></p>
+        <p>負け: <span id="lose">0</span></p>
+        <p>引き分け: <span id="tie">0</span></p>
+        <p>ブラックジャック: <span id="blackjack">0</span></p>
+        <p>21: <span id="twenty-one">0</span></p>
+        <div class="buttons">
+          <button id="delete-button" onclick="deleteData()">スコアボードを初期化</button>
+        </div>
+      </div>
+      <div class="game">
+        <div class="player">
+          <h2>あなた</h2>
+          <div class="hand" id="player-hand"></div>
+          <div class="viewpoint">スコア: <span id="player-score">0</span><span id="player-ishalf"></span></div>
+        </div>
+        <div class="dealer">
+          <h2>ディーラー</h2>
+          <div class="hand" id="dealer-hand"></div>
+          <div class="viewpoint">スコア: <span id="dealer-score">0</span></div>
+        </div>
+        <div class="buttons">
+          <button id="start-button">開始</button>
+          <button id="hit-button">ヒット</button>
+          <button id="stand-button">スタンド</button>
+        </div>
+      </div>
     </section>
     <h2>サイトマップ</h2>
     <ul id="sitemap"></ul>
     <footer></footer>
     <script src="/script.js"></script>
+    <script src="/main/blackjack/script.js"></script>
   </body>
 </html>

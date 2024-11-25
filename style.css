@@ -56,9 +56,13 @@ section {
   z-index: 1000;
 }
 
+.copybutton {
+  bottom: 0;
+}
+
 #description {
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px;
   background-color: whitesmoke;
   border-radius: 5px;
@@ -84,6 +88,21 @@ button:hover {
 
 button:active {
   background-color: #007bff;
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.buttons {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-align: center;
 }
 
 ul {
@@ -193,4 +212,11 @@ footer p {
   background-color: white;
   width: 100%;
   transition: width linear;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  #description {
+    font-size: 12px;
+  }
 }

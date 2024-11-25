@@ -1,3 +1,25 @@
+async function fetchJson(path) {
+  console.log(`Try to fetch ${path}.`);
+  const response = await fetch(path);
+  if (!response.ok) return console.error(`Failed to fetch ${path}.`);
+  const rawData = await response.text();
+  const data = JSON.parse(rawData);
+  console.log(`Successfully fetched ${path}.`, data);
+  return data;
+};
+
+async function fetchText(path) {
+  console.log(`Try to fetch ${path}.`);
+  const response = await fetch(path);
+  if (!response.ok) return console.error(`Failed to fetch ${path}.`);
+  const rawData = await response.text();
+  let data = rawData;
+  if (data.endsWith('\n')) data = data.slice(0, -1);
+  data = data.replace(/\n/g, '<br>');
+  console.log(`Successfully fetched ${path}.`, data);
+  return data;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/pages.txt')
     .then(response => response.text())
@@ -78,64 +100,61 @@ document.addEventListener('DOMContentLoaded', function () {
 const footer = document.querySelector('footer');
 
 if (footer) {
-  const links = [
-    {
-      url: 'https://dsc.gg/otohome',
-      textContent: 'Discord'
-    },
-    {
-      url: 'https://www.otoho.me/',
-      textContent: 'Team HP'
-    },
-    {
-      url: 'https://www.otoneko.cat/',
-      textContent: 'Dev HP'
+  (async () => {
+    const links = await fetchJson('/links.json');
+    for (const link of links) {
+      const element = document.createElement('a');
+      element.href = link.url;
+      element.textContent = link.textContent;
+      element.target = '_blank';
+      footer.appendChild(element);
     }
-  ];
-  for (const link of links) {
-    const element = document.createElement('a');
-    element.href = link.url;
-    element.textContent = link.textContent;
-    element.target = '_blank';
-    footer.appendChild(element);
-  }
 
-  const copyButton = document.createElement('button');
-  const linkIcon = '🔗';
-  const checkIcon = '✅';
+    const copyButton = document.createElement('button');
+    copyButton.className = 'copybutton';
+    const linkIcon = '/img/svg/link_b.svg';
+    const checkIcon = '/img/svg/check_b.svg';
 
-  copyButton.textContent = linkIcon;
-  copyButton.title = 'Copy';
-  copyButton.style.position = 'absolute';
-  copyButton.style.right = '20px';
-  copyButton.style.bottom = '20px';
-  copyButton.style.border = 'none';
-  copyButton.style.background = 'transparent';
-  copyButton.style.cursor = 'pointer';
-  copyButton.style.marginLeft = '10px';
-  copyButton.style.fontSize = '24px';
+    const iconImage = document.createElement('img');
+    iconImage.src = linkIcon;
+    iconImage.alt = 'Copy Link';
+    iconImage.style.width = '24px';
+    iconImage.style.height = '24px';
+    copyButton.appendChild(iconImage);
 
-  copyButton.addEventListener('click', () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url).then(() => {
-      copyButton.textContent = checkIcon;
-      copyButton.title = 'Success!'
+    copyButton.title = 'Copy';
+    copyButton.style.position = 'absolute';
+    copyButton.style.right = '20px';
+    copyButton.style.bottom = '20px';
+    copyButton.style.border = 'none';
+    copyButton.style.background = 'transparent';
+    copyButton.style.cursor = 'pointer';
+    copyButton.style.marginLeft = '10px';
 
-      setTimeout(() => {
-        copyButton.textContent = linkIcon;
-        copyButton.title = 'Copy'
-      }, 3000);
-    }).catch(err => {
-      console.error(err);
+    copyButton.addEventListener('click', () => {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        iconImage.src = checkIcon;
+        iconImage.alt = 'Copied';
+        copyButton.title = 'Success!';
+
+        setTimeout(() => {
+          iconImage.src = linkIcon;
+          iconImage.alt = 'Copy Link';
+          copyButton.title = 'Copy';
+        }, 3000);
+      }).catch(err => {
+        console.error(err);
+      });
     });
-  });
 
-  footer.appendChild(copyButton);
+    footer.appendChild(copyButton);
 
-  const c = document.createElement('p');
-  c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | Project Archive';
-  c.style.display = 'block';
-  footer.appendChild(c);
+    const c = document.createElement('p');
+    c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | Project Archive';
+    c.style.display = 'block';
+    footer.appendChild(c);
+  })();
 }
 
 function showBar() {
