@@ -7,6 +7,24 @@ function playSound(path) {
   sound.play();
 }
 
+function popup(message) {
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  const popup = document.createElement('div');
+  popup.className = 'popup';
+  popup.innerHTML = `<p>${message}</p>`;
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  setTimeout(() => {
+    overlay.remove();
+  }, 1000);
+}
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

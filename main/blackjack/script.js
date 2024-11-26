@@ -44,12 +44,10 @@ const suitEmojis = {
   'Spades': '<div class="black">♠'
 };
 
-// Save data
 function saveData() {
   localStorage.setItem('count', JSON.stringify(count));
 }
 
-// Delete data
 function deleteData() {
   count = { win: 0, lose: 0, tie: 0, blackjack: 0, reach21: 0 };
   localStorage.removeItem('count');
@@ -57,7 +55,6 @@ function deleteData() {
   showMessage('スコアボードを初期化しました！')
 }
 
-// Toggle docs
 function toggleDocs() {
   const docsboard = document.getElementById('docsboard');
   if (docsboard.style.display === 'none') {
@@ -67,7 +64,6 @@ function toggleDocs() {
   }
 }
 
-// Toggle scoreboard
 function toggleScoreboard() {
   const scoreboard = document.getElementById('scoreboard');
   if (scoreboard.style.display === 'none') {
@@ -77,7 +73,6 @@ function toggleScoreboard() {
   }
 }
 
-// Update scoreboard
 function updateScoreboard(totalPlays, wins, losses, draws, blackjacks, twentyOne) {
   document.getElementById('total').textContent = `${totalPlays.toLocaleString()}`;
   document.getElementById('win').textContent = `${wins.toLocaleString()}`;
@@ -87,7 +82,6 @@ function updateScoreboard(totalPlays, wins, losses, draws, blackjacks, twentyOne
   document.getElementById('twenty-one').textContent = `${twentyOne.toLocaleString()}`;
 }
 
-// Start
 startButton.addEventListener('click', startGame);
 
 function startGame() {
@@ -105,14 +99,12 @@ function startGame() {
   standButton.disabled = false;
 }
 
-// Draw
 function drawCard() {
   const randomIndex = Math.floor(Math.random() * deck.length);
   const card = deck.splice(randomIndex, 1)[0];
   return card;
 }
 
-// Create
 function createDeck() {
   const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
   const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -127,7 +119,6 @@ function createDeck() {
   return deck;
 }
 
-// Update UI
 function updateUI() {
   hitButton.disabled = true;
   standButton.disabled = true;
@@ -144,13 +135,11 @@ function updateUI() {
   standButton.disabled = false;
 }
 
-// Format card
 function formatCard(card) {
   const [value, suit] = card.split(' of ');
   return `${suitEmojis[suit]} ${value}</div>`;
 }
 
-// Score
 function calculateScore(cards) {
   let score = 0;
   let hasAce = false;
@@ -177,7 +166,6 @@ function calculateScore(cards) {
   return score;
 };
 
-// Is Half
 function isHalf(cards) {
   let score = 0;
   let hasAce = false;
@@ -204,7 +192,6 @@ function isHalf(cards) {
   return aceCount > 0;
 };
 
-// Hit
 hitButton.addEventListener('click', () => {
   playerCards.push(drawCard());
   updateUI();
@@ -216,7 +203,6 @@ hitButton.addEventListener('click', () => {
   }
 });
 
-// Stand
 standButton.addEventListener('click', () => {
   while (calculateScore(dealerCards) < 17) {
     dealerCards.push(drawCard());
@@ -226,14 +212,12 @@ standButton.addEventListener('click', () => {
   endGame();
 });
 
-// Blackjack?
 function hasBlackjack(cards) {
   return (
     (cards.length === 2 && calculateScore(cards) === 21)
   );
 }
 
-// End
 async function endGame() {
   gameInProgress = false;
   hitButton.disabled = true;
@@ -304,7 +288,6 @@ async function endGame() {
   showMessage(message);
 }
 
-// Pop up
 function showMessage(message) {
   const overlay = document.createElement('div');
   overlay.className = 'overlay';
@@ -327,6 +310,5 @@ function showMessage(message) {
   }, 1000);
 }
 
-// Reset
 hitButton.disabled = true;
 standButton.disabled = true;

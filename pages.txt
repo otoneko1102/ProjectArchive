@@ -2,6 +2,7 @@
 /main/blackjack/ ブラックジャック シンプルなブラックジャックで遊べます
 /main/exchange/ 為替レート ...
 /main/fake/ 偽リンク生成 ...
+/main/othello/ オセロ シンプルなオセロで遊べます
 /main/ping/ サイトステータス 指定したページのステータスをチェックします
 /main/replace/ 文字置き換え 文章中の文字を置き換えます
 /main/tategaki/ 縦書き変換 横書きの文章を擬似的に縦書きに変換します

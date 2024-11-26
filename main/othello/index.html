@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Project Archive | オセロ</title>
+    <meta name="description" content="シンプルなオセロで遊べます">
+    <meta name="keywords" content="projectarchive,project,archive.otoneko,音猫,webtool,tool">
+    <meta name="theme-color" content="#f0ffff">
+
+    <meta property="og:title" content="Project Archive | オセロ">
+    <meta property="og:description" content="シンプルなオセロで遊べます">
+    <meta property="og:image" content="https://www.projectarchive.cloud/img/icon.png">
+    <meta property="og:url" content="https://www.projectarchive.cloud">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Project Archive">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Archive | オセロ">
+    <meta name="twitter:description" content="シンプルなオセロで遊べます">
+    <meta name="twitter:image" content="https://www.projectarchive.cloud/img/icon.png">
+    <meta name="twitter:url" content="https://www.projectarchive.cloud">
+    <meta name="twitter:site" content="@ProjectArchiveC">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/main/othello/style.css" type="text/css">
+  </head>
+  <body>
+    <img class="logo" src="/img/logo.png">
+    <h2 id="name"></h2>
+    <div id="description"></div>
+    <section id="function">
+      <div class="buttons">
+        <button id="easy" onclick="modeChange('easy')">易しい</button>
+        <button id="normal" onclick="modeChange('normal')" disabled="true">普通</button>
+        <button id="hard" onclick="modeChange('hard')">難しい</button>
+        <button id="reset-button" onclick="resetBoard()">盤面を初期化</button>
+      </div>
+      <div class="game-container">
+        <div class="board" id="board"></div>
+        <p class="mode">モード: <span id="mode">普通</span></p>
+        <p id="status">⚫ あなたの番</p>
+        <div class="score">
+          <p>⚫ あなたのスコア: <span id="playerXScore">0</span></p>
+          <p>⚪ COMのスコア: <span id="playerOScore">0</span></p>
+        </div>
+      </div>
+    </section>
+    <h2>サイトマップ</h2>
+    <ul id="sitemap"></ul>
+    <footer></footer>
+    <script src="/script.js"></script>
+    <script src="/main/othello/script.js"></script>
+  </body>
+</html>

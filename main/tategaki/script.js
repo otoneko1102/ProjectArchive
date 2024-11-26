@@ -59,7 +59,7 @@ function genScript() {
 document.getElementById("copyBtn").addEventListener("click", function () {
   const textArea = document.getElementById("output");
   navigator.clipboard.writeText(textArea.value)
-    .then(() => alert("クリップボードにコピーしました！"))
+    .then(() => popup("クリップボードにコピーしました！"))
     .catch(err => console.error("クリップボードへのコピーに失敗しました: ", err));
 });
 
