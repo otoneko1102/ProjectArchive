@@ -5,8 +5,8 @@
 .game-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 水平方向に中央寄せ */
-  justify-content: center; /* 垂直方向に中央寄せ */
+  align-items: center;
+  justify-content: center;
   background-color: whitesmoke;
   margin: 0 auto;
   margin-top: 10px;

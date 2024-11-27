@@ -51,6 +51,81 @@ async function fetchText(path) {
   return data;
 };
 
+function showLoadingBar(input) {
+  const loading = document.createElement('div');
+  loading.id = 'loading';
+  loading.innerHTML = `「${input}」を検索しています...`;
+
+  const progressBar = document.createElement('div');
+  progressBar.id = 'progress-bar';
+  loading.appendChild(progressBar);
+  document.body.appendChild(loading);
+
+  const during = 3000;
+  setTimeout(() => {
+    progressBar.style.transition = `width ${during}ms linear`;
+    progressBar.style.width = '0%';
+  }, 10);
+
+  setTimeout(() => {
+    loading.style.opacity = '0';
+    setTimeout(() => loading.remove(), 500);
+  }, during);
+}
+
+function search() {
+  const searchInput = document.getElementById('search');
+  const searchWord = searchInput.value;
+  const searchButton = document.getElementById('search-button');
+  const searchIcon = document.getElementById('search-icon');
+  searchButton.disabled = true;
+  searchIcon.src = '/img/svg/loading.svg';
+  searchIcon.title = 'Loading...';
+  searchIcon.alt = 'Loading...';
+  searchIcon.classList.add('spin');
+
+  const sitemapChilds = document.querySelectorAll('li[id="sitemap-child"]');
+
+  if (searchWord) {
+    showLoadingBar(searchWord);
+
+    for (const child of sitemapChilds) {
+      const childLinks = child.getElementsByTagName('a');
+      let matchFound = false;
+      for (const link of childLinks) {
+        if (
+          link.textContent.includes(searchWord) ||
+          link.href
+            .replace(`${window.location.protocol}//${window.location.host}`, '')
+            .replace('/main/', '')
+            .replace(/\//g, '')
+            .includes(searchWord)
+        ) {
+          matchFound = true;
+          break;
+        }
+      }
+      if (matchFound) {
+        child.style.display = 'block';
+      } else {
+        child.style.display = 'none';
+      }
+    }
+  } else {
+    for (const child of sitemapChilds) {
+      child.style.display = 'block';
+    }
+  }
+
+  setTimeout(() => {
+    searchIcon.classList.remove('spin');
+    searchButton.disabled = false;
+    searchIcon.src = '/img/svg/search.svg';
+    searchIcon.title = 'Search';
+    searchIcon.alt = 'Search';
+  }, 3000)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('/pages.txt')
     .then(response => response.text())
@@ -58,6 +133,44 @@ document.addEventListener('DOMContentLoaded', () => {
       const sitemapElement = document.getElementById('sitemap');
 
       if (!sitemapElement) return;
+
+      const searchBar = document.getElementById('search-bar');
+      const searchInputWrapper = document.createElement('div');
+      searchInputWrapper.id = 'search-wrapper';
+      const searchInput = document.createElement('input');
+      searchInput.id = 'search';
+      searchInput.placeholder = 'サイトマップを検索';
+      searchInputWrapper.appendChild(searchInput);
+      searchBar.appendChild(searchInputWrapper);
+      searchInput.addEventListener('input', () => {
+        const clearButton = searchInputWrapper.querySelector('::after');
+        if (searchInput.value) {
+          searchInputWrapper.style.setProperty('--clear-button-display', 'block');
+        } else {
+          searchInputWrapper.style.setProperty('--clear-button-display', 'none');
+        }
+      });
+      searchInputWrapper.addEventListener('click', (event) => {
+        const rect = searchInputWrapper.getBoundingClientRect();
+        const isWithinClearButton = event.clientX > rect.right - 30 && event.clientX < rect.right;
+        
+        if (isWithinClearButton) {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+        }
+      });
+      const searchButton = document.createElement('button');
+      searchButton.id = 'search-button';
+      searchButton.onclick = search;
+      const searchIcon = document.createElement('img');
+      searchIcon.id = 'search-icon';
+      searchIcon.src = '/img/svg/search.svg';
+      searchIcon.title = 'Search';
+      searchIcon.alt = 'Search';
+      searchIcon.style.width = '20px';
+      searchIcon.style.height = '20px';
+      searchButton.appendChild(searchIcon);
+      searchBar.appendChild(searchButton);
 
       const lines = data.split('\n');
 
@@ -93,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           const listItem = document.createElement('li');
+          listItem.id = 'sitemap-child';
           const link = document.createElement('a');
           link.href = path;
           link.textContent = name;
@@ -114,8 +228,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (functionSection) {
     const button = document.createElement('button');
-    button.id = 'scrollButton';
-    button.textContent = 'Jump!';
+    button.id = 'scroll-button';
+    button.textContent = '⏬️';
 
     document.body.appendChild(button);
 
@@ -130,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   const button = document.createElement('button');
-  button.id = 'soundButton';
+  button.id = 'sound-button';
   button.textContent = isMuted === 'true' ? '📢' : '🔇';
 
   document.body.appendChild(button);
@@ -145,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('mute', 'true');
       isMuted = 'true';
     }
+    popup(`ミュートを${isMuted === 'true' ? '有効化' : '無効化'}しました！`);
     console.log("Mute: " + isMuted);
   });
 });
@@ -163,7 +278,7 @@ if (footer) {
     }
 
     const copyButton = document.createElement('button');
-    copyButton.className = 'copybutton';
+    copyButton.className = 'copy-button';
     const linkIcon = '/img/svg/link_b.svg';
     const checkIcon = '/img/svg/check_b.svg';
 
@@ -189,12 +304,13 @@ if (footer) {
         iconImage.src = checkIcon;
         iconImage.alt = 'Copied';
         copyButton.title = 'Success!';
+        popup('ページのリンクをコピーしました！');
 
         setTimeout(() => {
           iconImage.src = linkIcon;
           iconImage.alt = 'Copy Link';
           copyButton.title = 'Copy';
-        }, 3000);
+        }, 1000);
       }).catch(err => {
         console.error(err);
       });

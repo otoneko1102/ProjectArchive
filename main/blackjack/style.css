@@ -36,6 +36,15 @@
   justify-content: center;
 }
 
+.game-buttons {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .red {
   color: red;
 }
