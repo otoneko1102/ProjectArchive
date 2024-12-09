@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Project Archive | YouTube動画情報</title>
+    <meta name="description" content="YouTubeの動画情報を取得します">
+    <meta name="keywords" content="projectarchive,project,archive.otoneko,音猫,webtool,tool">
+    <meta name="theme-color" content="#f0ffff">
+
+    <meta property="og:title" content="Project Archive | YouTube動画情報">
+    <meta property="og:description" content="YouTubeの動画情報を取得します">
+    <meta property="og:image" content="https://www.projectarchive.cloud/img/icon.png">
+    <meta property="og:url" content="https://www.projectarchive.cloud">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Project Archive">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Archive | YouTube動画情報">
+    <meta name="twitter:description" content="YouTubeの動画情報を取得します">
+    <meta name="twitter:image" content="https://www.projectarchive.cloud/img/icon.png">
+    <meta name="twitter:url" content="https://www.projectarchive.cloud">
+    <meta name="twitter:site" content="@ProjectArchiveC">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="2048x2048" href="/img/icon.png">
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/main/youtube/style.css" type="text/css">
+  </head>
+  <body>
+    <img class="logo" src="/img/logo.png">
+    <h2 id="name"></h2>
+    <div id="description"></div>
+    <section id="function">
+      <div id="video-info">
+        <input type="text" id="youtube-url" placeholder="https://youtube.com/watch?v=VIDEO_ID">
+        <button onclick="fetchYouTube()">取得</button>
+        <div id="result">
+          <div class="thumbnail">
+            <img id="thumbnail" src="/img/icon.jpg" alt="Thumbnail">
+          </div>
+          <div id="data">
+            <p id="title">---</p>
+            <p id="author">---</p>
+            <div class="count">
+              <p id="play"></p>
+              <p id="like"></p>
+              <p id="dislike"></p>
+            </div>
+          </div>
+        </div>
+        <p>Powered by <a href="https://returnyoutubedislike.com/" target="_blank">Return YouTube Dislike</a></p>
+      </div>
+    </section>
+    <h2>サイトマップ</h2>
+    <div id="search-bar"></div>
+    <ul id="sitemap"></ul>
+    <footer></footer>
+
+    <script src="/script.js"></script>
+    <script src="/main/youtube/script.js"></script>
+  </body>
+</html>

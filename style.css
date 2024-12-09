@@ -92,6 +92,18 @@ section {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+#t-pp {
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 button {
   font-family: 'Kiwi Maru', sans-serif;
   padding: 10px 20px;
@@ -247,6 +259,21 @@ a:hover {
   color: #007acc;
 }
 
+a[target="_blank"]::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  background-image: url('/img/svg/link.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a[target="_blank"]:hover::after {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(82%) saturate(1963%) hue-rotate(195deg) brightness(92%) contrast(96%);
+}
+
 form {
   display: grid;
   margin: 0 auto;
@@ -254,18 +281,21 @@ form {
 }
 
 select {
+  font-family: 'Kiwi Maru', sans-serif;
   border-color: darkgrey;
   border-width: 3px;
   border-radius: 5px;
 }
 
 input {
+  font-family: 'Kiwi Maru', sans-serif;
   border-color: darkgrey;
   border-width: 3px;
   border-radius: 5px;
 }
 
 textarea {
+  font-family: 'Kiwi Maru', sans-serif;
   width: 100%;
   border-color: darkgrey;
   border-width: 3px;
@@ -290,11 +320,6 @@ footer {
 
 footer a {
   margin: 5px 10px;
-}
-
-footer a::after {
-  content: ' >';
-  font-size: 12px;
 }
 
 footer p {

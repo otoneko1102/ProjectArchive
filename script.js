@@ -245,17 +245,17 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const button = document.createElement('button');
   button.id = 'sound-button';
-  button.textContent = isMuted === 'true' ? '📢' : '🔇';
+  button.textContent = isMuted === 'true' ? '📣' : '🔇';
 
   document.body.appendChild(button);
 
   button.addEventListener('click', function () {
-    if (button.textContent === '📢') {
+    if (button.textContent === '📣') {
       button.textContent = '🔇';
       localStorage.setItem('mute', 'false');
       isMuted = 'false';
     } else {
-      button.textContent = '📢';
+      button.textContent = '📣';
       localStorage.setItem('mute', 'true');
       isMuted = 'true';
     }
@@ -263,6 +263,19 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Mute: " + isMuted);
   });
 });
+
+const tpp = document.getElementById('t-pp');
+
+if (tpp) {
+  (async () => {
+    const link = (await fetchJson('/config.json'))['t-pp'];
+    const a = document.createElement('a');
+    a.href = link;
+    a.textContent = '利用規約・プライバシーポリシー';
+    a.target = '_blank';
+    tpp.appendChild(a);
+  })();
+}
 
 const footer = document.querySelector('footer');
 
