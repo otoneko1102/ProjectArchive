@@ -61,7 +61,7 @@ function showLoadingBar(input) {
   loading.appendChild(progressBar);
   document.body.appendChild(loading);
 
-  const during = 3000;
+  const during = 1500;
   setTimeout(() => {
     progressBar.style.transition = `width ${during}ms linear`;
     progressBar.style.width = '0%';
@@ -86,36 +86,7 @@ function search() {
 
   const sitemapChilds = document.querySelectorAll('li[id="sitemap-child"]');
 
-  if (searchWord) {
-    showLoadingBar(searchWord);
-
-    for (const child of sitemapChilds) {
-      const childLinks = child.getElementsByTagName('a');
-      let matchFound = false;
-      for (const link of childLinks) {
-        if (
-          link.textContent.includes(searchWord) ||
-          link.href
-            .replace(`${window.location.protocol}//${window.location.host}`, '')
-            .replace('/main/', '')
-            .replace(/\//g, '')
-            .includes(searchWord)
-        ) {
-          matchFound = true;
-          break;
-        }
-      }
-      if (matchFound) {
-        child.style.display = 'block';
-      } else {
-        child.style.display = 'none';
-      }
-    }
-  } else {
-    for (const child of sitemapChilds) {
-      child.style.display = 'block';
-    }
-  }
+  if (searchWord) showLoadingBar(searchWord);
 
   setTimeout(() => {
     searchIcon.classList.remove('spin');
@@ -123,7 +94,36 @@ function search() {
     searchIcon.src = '/img/svg/search.svg';
     searchIcon.title = 'Search';
     searchIcon.alt = 'Search';
-  }, 3000)
+
+    if (searchWord) {
+      for (const child of sitemapChilds) {
+        const childLinks = child.getElementsByTagName('a');
+        let matchFound = false;
+        for (const link of childLinks) {
+          if (
+            link.textContent.includes(searchWord) ||
+            link.href
+              .replace(`${window.location.protocol}//${window.location.host}`, '')
+              .replace('/main/', '')
+              .replace(/\//g, '')
+              .includes(searchWord)
+          ) {
+            matchFound = true;
+            break;
+          }
+        }
+        if (matchFound) {
+          child.style.display = 'block';
+        } else {
+          child.style.display = 'none';
+        }
+      }
+    } else {
+      for (const child of sitemapChilds) {
+        child.style.display = 'block';
+      }
+    }
+  }, 1000)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -148,6 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
           searchInputWrapper.style.setProperty('--clear-button-display', 'block');
         } else {
           searchInputWrapper.style.setProperty('--clear-button-display', 'none');
+        }
+      });
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          search();
         }
       });
       searchInputWrapper.addEventListener('click', (event) => {
