@@ -11,7 +11,6 @@ function fetchYouTube() {
         if (data.error) {
           console.error(data.error);
           popup("動画タイトル・投稿者・サムネイルの取得に失敗しました");
-          return;
         }
 
         const title = data.title;
@@ -19,9 +18,9 @@ function fetchYouTube() {
         const authorPage = data.author_url;
         const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
-        document.getElementById("title").innerHTML = `<a href="${url}" target="_blank">${title}</a>`;
-        document.getElementById("author").innerHTML = `<a href="${authorPage}" target="_blank">${author}</a>`;
-        document.getElementById("thumbnail").src = thumbnail;
+        document.getElementById("title").innerHTML = title ? `元動画: <a href="${url}" target="_blank">${title}</a>`  : '元動画: ---';
+        document.getElementById("author").innerHTML = author ? `投稿者: <a href="${authorPage}" target="_blank">${author}</a>` : '投稿者: ---';
+        document.getElementById("thumbnail").src = thumbnail ?? '/img/icon.jpg';
       })
       .catch(error => {
         console.error(error);
@@ -35,11 +34,10 @@ function fetchYouTube() {
         if (data.status == 404) {
           console.error(data.title);
           popup("動画情報の取得に失敗しました");
-          return;
         }
-        const play = data.viewCount.toLocaleString();
-        const like = data.likes.toLocaleString();
-        const dislike = data.dislikes.toLocaleString()
+        const play = data.viewCount?.toLocaleString() ?? '---';
+        const like = data.likes?.toLocaleString() ?? '---';
+        const dislike = data.dislikes?.toLocaleString() ?? '---';
 
         document.getElementById("play").innerText = ` 再生数: ${play}`;
         document.getElementById("like").innerText = `高評価数: ${like}`;
