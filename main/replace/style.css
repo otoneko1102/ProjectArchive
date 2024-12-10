@@ -8,6 +8,10 @@ button {
   max-width: 175px;
 }
 
+.buttons {
+  margin-top: 10px;
+}
+
 form h2, div h2 {
   text-align: left;
 }
