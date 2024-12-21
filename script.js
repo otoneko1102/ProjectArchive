@@ -337,7 +337,7 @@ if (footer) {
     footer.appendChild(copyButton);
 
     const c = document.createElement('p');
-    c.innerHTML = '&copy; 2024 otoneko. All rights reserved. | Project Archive';
+    c.innerHTML = `&copy; 2024 - ${new Date().getFullYear()} otoneko. All rights reserved. | Project Archive`;
     c.style.display = 'block';
     footer.appendChild(c);
   })();
